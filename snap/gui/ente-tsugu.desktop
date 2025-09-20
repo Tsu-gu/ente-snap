@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ente Photos
+Exec=ente-tsugu
+Icon=${SNAP}/meta/gui/ente-tsugu.png
+Comment=Safe home for your photos
+Terminal=false
+Type=Application
+MimeType=x-content/unix-software;
