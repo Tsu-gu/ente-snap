@@ -1,0 +1,69 @@
+name: ente-tsugu
+base: core24
+version: '1.7.14'
+summary: Safe home for your photos 
+description: |
+  Safe home for your photos
+  End-to-end encrypted. Cross-platform. Open-source.
+
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+  arm64:
+
+lint:
+  ignore:
+    - classic
+    - library
+
+parts:
+  ente-tsugu:
+    source:
+      - on amd64 to amd64: https://github.com/ente-io/photos-desktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/ente-${SNAPCRAFT_PROJECT_VERSION}-amd64.deb
+      - on amd64 to arm64: https://github.com/ente-io/photos-desktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/ente-${SNAPCRAFT_PROJECT_VERSION}-arm64.deb
+    plugin: dump
+    source-type: deb
+    stage-packages:
+      - libgtk-3-0
+      - libnotify4
+      - libnss3 
+      - libxss1
+      - libxtst6
+      - xdg-utils 
+      - libatspi2.0-0 
+      - libuuid1
+      - libsecret-1-0
+      - libproxy1v5
+    prime: 
+      - -opt/ente/chrome-sandbox  
+
+plugs:
+  shmem:
+    interface: shared-memory
+    private: true
+
+apps:
+  ente-tsugu:
+    command: opt/ente/ente --no-sandbox
+    extensions: [gnome]
+    environment:
+      HOME: "$SNAP_USER_DATA"
+      LD_LIBRARY_PATH: >
+       $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:
+       $SNAP/opt/ente:
+       $LD_LIBRARY_PATH
+    plugs:
+      - network
+      - network-bind
+      - home
+      - removable-media
+      - desktop
+      - desktop-legacy
+      - password-manager-service
+      - x11
+      - wayland
+      - unity7
+      - opengl
+      - hardware-observe
