@@ -48,8 +48,10 @@ apps:
   ente-tsugu:
     command: opt/ente/ente --no-sandbox
     extensions: [gnome]
+    autostart: ente.desktop
     environment:
       HOME: "$SNAP_USER_DATA"
+      TMPDIR: "$SNAP_USER_DATA/tmp"
       LD_LIBRARY_PATH: >
        $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:
        $SNAP/opt/ente:
@@ -61,9 +63,8 @@ apps:
       - removable-media
       - desktop
       - desktop-legacy
-      - password-manager-service
       - x11
       - wayland
       - unity7
-      - opengl
-      - hardware-observe
+      - password-manager-service
+
