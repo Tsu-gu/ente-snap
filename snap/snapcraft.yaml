@@ -22,7 +22,7 @@ parts:
   ente-tsugu:
     source:
       - on amd64 to amd64: https://github.com/ente-io/photos-desktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/ente-${SNAPCRAFT_PROJECT_VERSION}-amd64.deb
-      - on amd64 to arm64: https://github.com/ente-io/photos-desktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/ente-${SNAPCRAFT_PROJECT_VERSION}-arm64.deb
+      - on arm64 to arm64: https://github.com/ente-io/photos-desktop/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/ente-${SNAPCRAFT_PROJECT_VERSION}-arm64.deb
     plugin: dump
     source-type: deb
     stage-packages:
